@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 900px;
+            margin: 20px auto;
+            text-align: center;
+            line-height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="num1">數字1 :</label>
+        <input type="text" name="" value="" id="num1"><br>
+        <label for="num2">數字2 :</label>
+        <input type="text" name="" value="" id="num2"><br>
+        <input type="button" name="" value="add" id="btn1">
+        <br>
+        <span>兩數總和 = </span><span id="ans"></span>
+    </div>
+    
+
+    <script>
+
+    const btn1 = document.getElementById("btn1");
+
+    btn1.addEventListener("click",()=>{
+        const num1 = document.getElementById("num1").value;
+        const num2 = document.getElementById("num2").value;
+        const ans = document.getElementById("ans");
+
+        if(!num1||!num2) return;
+
+        (!isNaN(num1)||!isNaN(num2)) ? ans.innerHTML = parseInt(num1)+parseInt(num2) : ans.innerHTML = "輸入錯誤";
+    });            
+    </script>
+</body>
+</html>

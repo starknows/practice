@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .box{
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            padding: 50px;
+            background:#ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="button" id="btnSet" value="開啟">
+        <input type="button" id="btnClear" value="清除計時器">
+        <p id="time">0</p>
+        <hr>
+        <p>現在時間：</p>
+        <h1 id="showTime"></h1>
+    </div>
+    
+<script>
+    const btnSet = document.getElementById("btnSet");
+    const btnClear = document.getElementById("btnClear");
+    const showTime = document.getElementById("showTime");
+    const time = document.getElementById("time");
+    var timeCount;
+
+    var reloadTime = setInterval(()=>{
+        const nowTime = new Date();
+        const hour = nowTime.getHours();
+        const minute = nowTime.getMinutes();
+        const second = nowTime.getSeconds();
+        showTime.innerHTML = hour+" : "+minute+" : "+second;
+    },1000);
+
+    btnSet.addEventListener("click",()=>{
+        if(btnSet.value=="關閉"){
+            btnSet.value="開啟";
+            clearInterval(timeCount);
+        }else{
+            btnSet.value="關閉";
+            timeCount =  setInterval(()=>{
+                time.innerHTML = parseInt(time.innerHTML)+1;
+            },1000);
+        }
+    });
+    btnClear.addEventListener("click",()=>{
+        clearInterval(timeCount);
+        btnSet.value="開啟";
+        time.innerHTML = 0;
+    });
+
+
+</script>
+
+</body>
+</html>
